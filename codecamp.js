@@ -4,7 +4,7 @@
         return;
     }
 
-    $.fn.realtimeChart = function (options) {
+    $.fn.realtimeChart = function (interval, options) {
         var element = this;
         var chart = new Chart(element, {
             type: 'line',
@@ -21,7 +21,7 @@
                 },
                 plugins: {
                     streaming: {
-                        delay: 2000,
+                        delay: interval,
                         onRefresh: function (chart) {
                             chart.data.datasets.forEach(function (dataset) {
                                 dataset.data.push({
